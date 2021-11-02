@@ -65,6 +65,7 @@ import jcrapi2.response.GetClanRiverRaceLogResponse;
 import jcrapi2.response.GetClanWarLogResponse;
 import jcrapi2.response.GetClansResponse;
 import jcrapi2.response.GetCurrentClanRiverRaceResponse;
+import jcrapi2.response.GetGlobalTournamentsResponse;
 import jcrapi2.response.GetLocationClanRankingsResponse;
 import jcrapi2.response.GetLocationClanWarRankingsResponse;
 import jcrapi2.response.GetLocationPlayerRankingsResponse;
@@ -102,6 +103,7 @@ public class DataModelCheck {
   private void start() throws IOException, ClassNotFoundException {
     loadModel();
 
+    /*
     testClans();
     testClan();
     testClanMembers();
@@ -121,6 +123,8 @@ public class DataModelCheck {
     testClanRiverRaceLog();
     testCurrentClanRiverRace();
     testLocations();
+    */
+    testGlobalTournaments();
   }
 
   private void printResults() {
@@ -288,6 +292,12 @@ public class DataModelCheck {
     test(Arrays.asList(
         "clans/%23RP88QQG/currentriverrace"
     ), GetCurrentClanRiverRaceResponse.class, false, ClanRiverRaceLog.class);
+  }
+
+  private void testGlobalTournaments() throws IOException {
+    test(Arrays.asList(
+        "globaltournaments"
+    ), GetGlobalTournamentsResponse.class, false, SearchedTournament.class);
   }
 
   private void test(List<String> parts, Class<?> clazz, boolean isList, Class<?> itemClass) throws IOException {
